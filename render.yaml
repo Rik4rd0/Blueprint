@@ -1,0 +1,33 @@
+# Exported from Render on 2024-08-17T00:42:39Z
+services:
+- type: web
+  name: backendTercero
+  runtime: node
+  repo: https://github.com/Rik4rd0/backendTercero
+  plan: free
+  envVars:
+  - key: DB_DIALECT
+    sync: false
+  - key: DB_NAME
+    sync: false
+  - key: DB_PASS
+    sync: false
+  - key: DB_USER
+    sync: false
+  - key: DB_HOST
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: node index.js
+  pullRequestPreviewsEnabled: false
+- type: web
+  name: tercero-1
+  runtime: static
+  repo: https://github.com/Rik4rd0/tercero
+  envVars:
+  - key: REACT_APP_API_URL
+    sync: false
+  buildCommand: npm run build
+  staticPublishPath: build
+  pullRequestPreviewsEnabled: false
+version: "1"
